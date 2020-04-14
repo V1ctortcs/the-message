@@ -24,17 +24,18 @@
             <label for="pwd">Senha:</label>
             <input type="password" class="form-control" id="pwd" placeholder="Senha" name="password">
           </div>
-                  {% if messages %}
-                      {% for message in messages %}
-                          <div class="alert alert-danger">{{ message }}</div>
+                  {% if messages%}
+                      {% for message in messages  %}                        
+                          <div class="alert alert-danger">{{ message }}</div>                      
                       {% endfor %}
-
                   {% endif %}
-          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="submit" class="btn btn-primary" style="margin-left:10%">Entrar</button>
+          <button type="button" class="btn btn-info">Cadastrar</button>
+              
       </div>
     </div>
   </form>
 </div>
-
 </body>
+
 </html>
