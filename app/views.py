@@ -16,6 +16,7 @@ def submit_login(request):
         password  = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
+            print('-=-=-=-=-=-=-=-=-=-=-=-=-=',request.user,'Entrou -=-=-=-=-=-=-=-=-=-=-=-=-=' )
             login(request, user)
             return redirect('/home/')
         else:
@@ -28,6 +29,9 @@ def index (request):
     return render(request,'home.html')
 
 def logout_user(request):
-    print (request.user)
+    print ('-=-=-=-=-=-=-=-=-=-=-=-=-=',request.user,'Saiu -=-=-=-=-=-=-=-=-=-=-=-=-=')
     logout(request)
     return redirect ('/login/')
+
+def home(request):
+    return render(request, 'home.html')
