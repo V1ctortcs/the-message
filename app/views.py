@@ -25,7 +25,7 @@ def submit_login(request):
 
 
 @login_required(login_url='/login')
-def index (request):
+def home (request):
     return render(request,'home.html')
 
 def logout_user(request):
@@ -33,5 +33,11 @@ def logout_user(request):
     logout(request)
     return redirect ('/login/')
 
-def home(request):
-    return render(request, 'home.html')
+def perfil_user(request):
+    return render(request, 'perfil.html')
+
+def registrar_user(request):
+    return render(request, 'registrar.html')
+
+def recuper_senha_user(request):
+    return render(request, 'recuperarsenha.html')

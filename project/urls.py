@@ -12,7 +12,13 @@ urlpatterns = [
     path('login/submit', views.submit_login),
     path('home/', views.home),
     path('logout/', views.logout_user),
+    path('perfil/', views.perfil_user),
+    path('cadastro/', views.registrar_user),
+    path('recuperarsenha/', views.recuper_senha_user),
+
+
     path('',RedirectView.as_view(url='login/'))
+
    
 ]
 

@@ -14,7 +14,8 @@
 <div class="container mt-4">  
   <form action="submit", method="POST">{% csrf_token %}
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="sidenav">
@@ -25,7 +26,7 @@
          </div>
       </div>
       <div class="main">
-         <div class="col-md-6 col-sm-12">
+         <form class="col-md-6 col-sm-12">
             <div class="login-form">
                 <form>
                     <div class="form-group">
@@ -41,14 +42,18 @@
                                   <div class="alert alert-danger">{{ message }}</div>
                               {% endfor %}
                           {% endif %}
+                    </form>
                     </div>
+
              <div>
                   <button type="submit" class="btn btn-black" >Entrar</button>
-                  <button type="submit" class="btn btn-secondary">Register</button>
+                  <a href="/cadastro/" class="btn btn-secondary">Registrar</a>
              </div>
              <div>
-              <a href="#">Esqueceu a Senha?</a>
+                 <a href="/recuperarsenha/">Esqueceu a Senha?</a>
              </div>
+         </form>
+      </div>
         </form>
             </div>
          </div>
@@ -98,7 +103,7 @@
 
 @media screen and (min-width: 768px){
     .main{
-        margin-left: 40%;
+        margin-left: 50%;
     }
 
     .sidenav{
@@ -110,7 +115,7 @@
     }
 
     .login-form{
-        margin-top: 80%;
+        margin-top: 35%;
     }
 
     .register-form{
