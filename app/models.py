@@ -8,13 +8,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class User(models.Model):
     telefone = models.CharField(max_length=12, unique=True)
     email = models.EmailField(max_length=30, unique=True)
     data_ciacao = models.DateField(auto_now_add=True)
     ativo = models.BooleanField(default=True)
-    
-    #FK de User do django
+
+    # FK de User do django
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
@@ -22,5 +23,4 @@ class User(models.Model):
 
     def __str__(self):
         return str(self.id)
-
 

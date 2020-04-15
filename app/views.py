@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from .models import User
 # Create your views here.
 
 def login_user(request):
@@ -34,7 +34,8 @@ def logout_user(request):
     return redirect ('/login/')
 
 def perfil_user(request):
-    return render(request, 'perfil.html')
+    user = User.objects.filter(ativo=True, user=request.user)
+    return render(request, 'perfil.html', {'user_model': user})
 
 def registrar_user(request):
     return render(request, 'registrar.html')
