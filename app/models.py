@@ -9,7 +9,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class User(models.Model):
+class Users(models.Model):
     telefone = models.CharField(max_length=12, unique=True)
     email = models.EmailField(max_length=30, unique=True)
     data_ciacao = models.DateField(auto_now_add=True)

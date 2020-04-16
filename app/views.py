@@ -3,7 +3,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import User
+from django.contrib.auth.models import User
+from .models import Users
 # Create your views here.
 
 def login_user(request):
@@ -34,7 +35,7 @@ def logout_user(request):
     return redirect ('/login/')
 
 def perfil_user(request):
-    user = User.objects.filter(ativo=True, user=request.user)
+    user = Users.objects.filter(ativo=True, user=request.user)
     return render(request, 'perfil.html', {'user_model': user})
 
 def registrar_user(request):
@@ -42,3 +43,20 @@ def registrar_user(request):
 
 def recuper_senha_user(request):
     return render(request, 'recuperarsenha.html')
+
+
+def set_user(request):
+
+    usernome = request.POST.get('nome')
+    usersobrenome = request.POST.get('sobrenome')
+    telefone = request.POST.get('telefone')
+
+    username = request.POST.get('user')
+    useremail = request.POST.get('email')
+    usersenha = request.POST.get('senha')
+
+
+    user = User.objects.create_user(username,useremail,usersenha)
+
+    #users = Users.object.create(telefone=telefone, user=user)
+    return redirect('/login/')
