@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Users
+from django.contrib.auth.forms import UserCreationForm # Formulario de criacao de usuarios
+from django.http import HttpResponseRedirect # Funcao para redirecionar o usuario
 # Create your views here.
 
 def login_user(request):
@@ -12,6 +14,7 @@ def login_user(request):
 
 @csrf_protect
 def submit_login(request):
+
     if request.POST:
         username = request.POST.get('username')
         password  = request.POST.get('password')
@@ -19,20 +22,20 @@ def submit_login(request):
         if user is not None:
             print('-=-=-=-=-=-=-=-=-=-=-=-=-=',request.user,'Entrou -=-=-=-=-=-=-=-=-=-=-=-=-=' )
             login(request, user)
-            return redirect('/home/')
+            return redirect('/themessage/home/')
         else:
             messages.error(request, 'Usuário ou Senha Ivalidos, Tente Novamente')
-    return redirect('/login/')
+    return redirect('themessage/login/')
 
 
-@login_required(login_url='/login')
+@login_required(login_url='themessage/login')
 def home (request):
     return render(request,'home.html')
 
 def logout_user(request):
     print ('-=-=-=-=-=-=-=-=-=-=-=-=-=',request.user,'Saiu -=-=-=-=-=-=-=-=-=-=-=-=-=')
     logout(request)
-    return redirect ('/login/')
+    return redirect ('/themessage/login/')
 
 def perfil_user(request):
     user = Users.objects.filter(ativo=True, user=request.user)
@@ -44,19 +47,18 @@ def registrar_user(request):
 def recuper_senha_user(request):
     return render(request, 'recuperarsenha.html')
 
-
 def set_user(request):
 
     usernome = request.POST.get('nome')
     usersobrenome = request.POST.get('sobrenome')
-    telefone = request.POST.get('telefone')
-
     username = request.POST.get('user')
     useremail = request.POST.get('email')
     usersenha = request.POST.get('senha')
 
-
-    user = User.objects.create_user(username,useremail,usersenha)
-
-    #users = Users.object.create(telefone=telefone, user=user)
-    return redirect('/login/')
+    if User.objects.filter(username=username):
+        messages.error(request, 'Usuário Invalido!! Já em uso')
+        return redirect('/themessage/registrar/')
+    else:
+        user = User.objects.create_user(username, useremail, usersenha, first_name=usernome, last_name=usersobrenome)
+        print('-=-=-=-=-=-=-=-=-=-=-=-=-=', user, 'cadastrado -=-=-=-=-=-=-=-=-=-=-=-=-=')
+        return redirect('/themessage/login/')

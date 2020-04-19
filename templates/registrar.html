@@ -32,14 +32,16 @@
                <label style="margin-left: 5%;">Nome De Usuário:</label>
                <input class="form-control" name="user" style="width: 50%; margin-left: 5%;">
            </div>
+           {% if messages%}
+                {% for message in messages  %}
+                    <div class="alert alert-danger" style="width: 50%; margin-left: 5%; text-align: center">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
           <div class="form-group">
             <label style="margin-left: 5%;">Endereço de Email:</label>
             <input type="email" class="form-control" name="email" style="width: 50%; margin-left: 5%;">
           </div>
-           <div class="form-group">
-               <label style="margin-left: 5%;">Telefone:</label>
-               <input class="form-control" name="telefone" style="width: 50%; margin-left: 5%;">
-           </div>
+
           <div class="form-group">
             <label style="margin-left: 5%;">Password:</label>
             <input type="password" class="form-control" name="senha" style="width: 50%; margin-left: 5%;">

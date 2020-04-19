@@ -59,33 +59,15 @@
                                                 <label>E-mail:</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{user.get_email}}</p>
+                                                <p>{{user.email}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Telefone:</label>
+                                                <label>Data de cadastro:</label>
                                             </div>
                                             <div class="col-md-6">
-                                                {% block content %}
-                                                    <p>
-                                                        {% for u in user_model %}
-                                                            {{u.telefone}}
-                                                        {% endfor %}
-                                                    </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Data de cadastro:</label>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <p>
-                                                                {% for u in user_model %}
-                                                                    {{u.data_ciacao}}
-                                                                {% endfor %}
-                                                            </p>
-                                                {% endblock %}
+                                                <p>{{user.date_joined}}</p>
                                             </div>
                                         </div>
                             </div>

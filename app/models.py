@@ -11,7 +11,6 @@ from django.contrib.auth.models import User
 
 class Users(models.Model):
     telefone = models.CharField(max_length=12, unique=True)
-    email = models.EmailField(max_length=30, unique=True)
     data_ciacao = models.DateField(auto_now_add=True)
     ativo = models.BooleanField(default=True)
 
