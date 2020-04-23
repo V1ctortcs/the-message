@@ -18,6 +18,7 @@ urlpatterns = [
     path('themessage/recuperarsenha/', views.recuper_senha_user),
 
 
+
     path('',RedirectView.as_view(url='themessage/login/'))
 
    

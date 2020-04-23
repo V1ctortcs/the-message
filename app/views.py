@@ -25,7 +25,7 @@ def submit_login(request):
             return redirect('/themessage/home/')
         else:
             messages.error(request, 'Usuário ou Senha Ivalidos, Tente Novamente')
-    return redirect('themessage/login/')
+    return redirect('/themessage/login/')
 
 
 @login_required(login_url='themessage/login')
