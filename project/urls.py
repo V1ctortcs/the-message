@@ -15,12 +15,9 @@ urlpatterns = [
     path('themessage/perfil/', views.perfil_user),
     path('themessage/registrar/', views.registrar_user),
     path('themessage/registrar/submit', views.set_user),
-    path('themessage/recuperarsenha/', views.recuper_senha_user),
-
-
+    path('themessage/recuperarsenha/', views.recovery_pass),
 
     path('',RedirectView.as_view(url='themessage/login/'))
 
-   
 ]
 

@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Users
+from app import emailService
+from random import randint
 from django.contrib.auth.forms import UserCreationForm # Formulario de criacao de usuarios
 from django.http import HttpResponseRedirect # Funcao para redirecionar o usuario
 # Create your views here.
@@ -62,3 +64,30 @@ def set_user(request):
         user = User.objects.create_user(username, useremail, usersenha, first_name=usernome, last_name=usersobrenome)
         print('-=-=-=-=-=-=-=-=-=-=-=-=-=', user, 'cadastrado -=-=-=-=-=-=-=-=-=-=-=-=-=')
         return redirect('/themessage/login/')
+
+
+@csrf_protect
+def recovery_pass(request):
+    data = {}
+    data['msg'] = []
+    data['error'] = []
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        try:
+            if (email == ''):
+                data['error'].append('email inválido')
+            else:
+                val_user = User.objects.filter(email=email)
+                if (len(val_user) > 0):
+                    newpass = randint(10000000, 99999999)
+                    user = User.objects.get(email=email)
+                    user.set_password(newpass)
+                    user.save()
+                    emailService.recoveryPass(newpass, user.username, email)
+                    data['msg'].append('Sua nova senha foi enviada no email!')
+                else:
+                    data['error'].append('email não cadastrado!')
+        except:
+            data['error'].append('Ocorreu algum erro, tente novamente mais tarde!')
+            return render(request, 'recuperarsenha.html', data)
+    return render(request, 'recuperarsenha.html', data)
