@@ -1,0 +1,117 @@
+<title>The Messeger - Perfil</title>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       {% include "header.html"%}
+    </head>
+
+    <body>
+    <h2 style="text-align:center">PERFIL</h2>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container emp-profile">
+            <form method="post" style="margin-left: 8%">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="profile-head" style="margin-left: 64%" >
+
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sobre</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">outros</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/cadastro/" class="btn btn-secondary">Editar Perfil</a>
+                    </div>
+                </div>
+                <div class="row" style="align-items: right; margin-top: 2%; margin-left: 30%">
+
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nome de Usuário:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nome:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user.get_full_name}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>E-mail:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user.email}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Data de cadastro:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user.date_joined}}</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>xxxxx</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user_model}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>xxxxx</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user_model}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>xxxxx</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user_model}}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>xxxxxx</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user_model}}</p>
+                                            </div>
+                                        </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% include "footer.html" %}
+    </body>
+</html>
