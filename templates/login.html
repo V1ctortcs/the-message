@@ -41,7 +41,13 @@
 
                     </form>
                     </div>
-
+              {% block content %}
+                {% if messages%}
+                    {% for message in messages  %}
+                        <div class="alert alert-danger" style="width: 50%; margin-left: 5%; text-align: center">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+             {% endblock %}
              <div>
                   <button type="submit" class="btn btn-black" >Entrar</button>
                   <a href="/themessage/registrar/" class="btn btn-secondary">Registrar</a>

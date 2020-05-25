@@ -7,9 +7,6 @@ from django.contrib.auth.models import User
 from .models import Users
 from app import emailService
 from random import randint
-from django.contrib.auth.forms import UserCreationForm # Formulario de criacao de usuarios
-from django.http import HttpResponseRedirect # Funcao para redirecionar o usuario
-# Create your views here.
 
 def login_user(request):
     return render(request, 'login.html')
@@ -19,7 +16,7 @@ def submit_login(request):
 
     if request.POST:
         username = request.POST.get('username')
-        password  = request.POST.get('password')
+        password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
             print('-=-=-=-=-=-=-=-=-=-=-=-=-=',request.user,'Entrou -=-=-=-=-=-=-=-=-=-=-=-=-=' )
@@ -37,7 +34,7 @@ def home (request):
 def logout_user(request):
     print ('-=-=-=-=-=-=-=-=-=-=-=-=-=',request.user,'Saiu -=-=-=-=-=-=-=-=-=-=-=-=-=')
     logout(request)
-    return redirect ('/themessage/login/')
+    return redirect('/themessage/login/')
 
 def perfil_user(request):
     user = Users.objects.filter(ativo=True, user=request.user)
